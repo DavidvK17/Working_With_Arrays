@@ -79,6 +79,9 @@ const dogs = [
 
 // Challenge 7: Loop over the 'dogs' array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do not create a new array, simply loop over the array. Forumla: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
 
+const ownersEatTooMuch = [];
+const ownersEatTooLittle = [];
+
 dogs.forEach((dog, i) => {
   dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
 
@@ -91,5 +94,47 @@ dogs.forEach((dog, i) => {
     console.log(`Sarahs dog is eating too much`);
   }
 
-  // Challenge 9;  Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+  // Challenge 9;   Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+
+  if (dog.curFood < 0.9 * dog.recommendedFood) {
+    ownersEatTooLittle.push(dog.owners);
+  } else if (dog.curFood > 1.1 * dog.recommendedFood) {
+    ownersEatTooMuch.push(dog.owners);
+  }
+
+  // Challenge 11: Log to the console whether there is any dog eating exactly the amount of food that is recommended (just true or false)
+  dog.curFood === dog.recommendedFood
+    ? console.log('True')
+    : console.log('False');
+
+  // Challenge 13: Create an array containing the dogs that are eating an okay amount of food
+  const dogsOkay = [];
+
+  // Challenge 12:  Log to the console whether there is any dog eating an okay amount of food (just true or false)
+  if (
+    dog.curFood >= 0.9 * dog.recommendedFood &&
+    dog.curFood <= 1.1 * dog.recommendedFood
+  ) {
+    console.log('True');
+    dogsOkay.push(dog);
+  } else console.log('False');
+  console.log(dogsOkay);
 });
+console.log(dogs);
+console.log(ownersEatTooMuch);
+console.log(ownersEatTooLittle);
+
+// Challenge 10: Log a string to the console for each array created in 3., like this: "Matilda and Alice and Bob's dogs eat too much!" and "Sarah and John and Michael's dogs eat too little!"
+
+const allOwnersEatTooMuch = ownersEatTooMuch.flat().join(' and ');
+console.log(`${allOwnersEatTooMuch}'s dogs eat too much!`);
+
+console.log(ownersEatTooLittle.flat().join(' and '));
+console.log(`${allOwnersEatTooMuch}'s dogs eat too little!`);
+
+// Challenge 14: Create a shallow copy of the 'dogs' array and sort it by recommended food portion in an ascending order
+console.log(dogs);
+const sortedDogs = dogs
+  .slice(dog => dog)
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(sortedDogs);
