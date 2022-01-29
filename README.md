@@ -1,6 +1,9 @@
 # Working with Arrays and applying Array Methods
 
 - slice (create a shallow copy)
+
+* filter (create a new array)
+
 - SPREAD Operator
 
 In this challenge sequence, I presume that two girls, Julia and Kate are doing a study on dogs. So each of them asked 5 dog owners

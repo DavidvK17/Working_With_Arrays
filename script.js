@@ -42,11 +42,28 @@ checkDogs();
 // Test Data
 const dogAges = [5, 2, 4, 1, 15, 8, 3];
 
+const dogHumanAges = [];
 function calcAverageHumanAge(ages) {
   ages.forEach(age => {
     let humanAge;
     age <= 2 ? (humanAge = 2 * age) : (humanAge = 16 + age * 4);
+    return dogHumanAges.push(humanAge);
   });
 }
 
 calcAverageHumanAge(dogAges);
+
+//Challenge 5: Exclude all dogs that are less than 18 human years old
+const adultHumanDogs = dogHumanAges.filter(age => age > 18);
+console.log(adultHumanDogs);
+
+// Challenge 6: Calculate the average human age of all adult dogs
+function avgHumanAgeDogs() {
+  let avgAge = 0;
+  adultHumanDogs.forEach(dog => (avgAge += dog));
+  return (avgAge /= adultHumanDogs.length);
+}
+
+console.log(avgHumanAgeDogs());
+
+// Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little. Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite. Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion
