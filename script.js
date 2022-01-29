@@ -67,3 +67,29 @@ function avgHumanAgeDogs() {
 console.log(avgHumanAgeDogs());
 
 // Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little. Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite. Eating an okay amount means the dog's current food portion is within a range 10% above and 10% below the recommended portion
+
+// Test Data
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] }
+];
+
+// Challenge 7: Loop over the 'dogs' array containing dog objects, and for each dog, calculate the recommended food portion and add it to the object as a new property. Do not create a new array, simply loop over the array. Forumla: recommendedFood = weight ** 0.75 * 28. (The result is in grams of food, and the weight needs to be in kg)
+
+dogs.forEach((dog, i) => {
+  dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28);
+
+  // Challenge 8: Find Sarah's dog and log to the console whether it's eating too much or too little
+  const dogSarah = dog.owners.includes('Sarah');
+
+  if (dogSarah && dog.curFood < 0.9 * dog.recommendedFood) {
+    console.log(`Sarahs dog is eating too little`);
+  } else if (dogSarah && dog.curFood > 1.1 * dog.recommendedFood) {
+    console.log(`Sarahs dog is eating too much`);
+  }
+
+  // Challenge 9;  Create an array containing all owners of dogs who eat too much ('ownersEatTooMuch') and an array with all owners of dogs who eat too little ('ownersEatTooLittle').
+});
